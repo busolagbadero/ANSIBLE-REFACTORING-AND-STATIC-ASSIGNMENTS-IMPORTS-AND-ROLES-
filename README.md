@@ -63,10 +63,21 @@ In /etc/ansible/ansible.cfg file ,i uncomment roles_path string and provided a f
 
 I navigated to the tasks directory, and inside the main.yml file, I prepared the configuration tasks to carry out the activities listed below:
 *Install and configure Apache (httpd service)
-*Clone Tooling website from GitHub https://github.com/<your-name>/tooling.git.
+*Clone Tooling website from GitHub https://github.com/busolagbadero/tooling.git.
 *Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
 *Make sure httpd service is started
 
+Within the static-assignments folder,I  created a new assignment for uat-webservers uat-webservers.yml. This is where i reference the role.
+
+![scl18](https://user-images.githubusercontent.com/94229949/193887326-2869fcc6-d8d1-4b02-b191-d0b3ce322451.png)
+
+The entry point to the ansible configuration is the site.yml file. Therefore, i need to refer  uat-webservers.yml role inside site.yml.
+
+![scl19](https://user-images.githubusercontent.com/94229949/193887896-82979f7a-474e-4ca3-9c80-36c5ec1f3fb0.png)
+
+Created a Pull Request and merged them to master branch
+
+I ran the playbook against your uat inventory using command ' sudo ansible-playbook -i /home/ubuntu/ansible-config-mgt/inventory/uat.yml /home/ubuntu/ansible-config-mgt/playbooks/site.yml '
 
 
 

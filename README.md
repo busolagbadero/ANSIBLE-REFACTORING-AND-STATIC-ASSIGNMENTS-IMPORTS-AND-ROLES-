@@ -10,7 +10,7 @@ Used command 'sudo mkdir /home/ubuntu/ansible-config-artifact ' and changed perm
 
 ![scl2](https://user-images.githubusercontent.com/94229949/193865541-9fa8e9bf-9c47-4ba8-89c8-1553b08c89aa.png)
 
-Jenkins' 'Manage Jenkins' tab is where I installed the copy artifacts plugin. Jenkins wasn't restarted after installing Copy Artifact. Created a new Freestyle project named ' save_artifacts ' 
+From Jenkins' 'Manage Jenkins' tab  I installed the copy artifacts plugin and created a new Freestyle project named ' save_artifacts ' 
 
 ![scl3](https://user-images.githubusercontent.com/94229949/193869208-96cd0fe4-68e4-4817-9278-d32a3b23c5e8.png)
 
@@ -33,9 +33,9 @@ In the playbooks folder, i created a file called  site.yml which will be the�
 
 Created static-assignments folder in repository root. The static-assignments folder holds all other children's playbooks. This is for easy organisation of my work.
 
-Move common.yml file into the newly created static-assignments folder.
+Moved common.yml file into the newly created static-assignments folder.
 
-Inside site.yml file, import common.yml playbook.
+Inside site.yml file,i import the common.yml playbook.
 
 ![scl8](https://user-images.githubusercontent.com/94229949/193879345-c94c422e-ee61-488d-8891-39060e5a6260.png)
 
@@ -53,11 +53,14 @@ To confirm  wireshark has been  deleted on all the servers i ran  wireshark --ve
 
 Configured UAT Webservers with a role ‘Webserver’
 
-In order to create a role, I first made a directory that I called roles and then manually arranged the files and directories under the roles directory.
+In order to create a role, I first made a directory that I called 'roles' and then manually arranged  files and directories under the roles directory.
 
 ![scl150](https://user-images.githubusercontent.com/94229949/193884054-cbe4adb8-ac52-4007-85f4-950cb9f1f286.png)
 
-Updated the  inventory ansible-config-mgt/inventory/uat.yml file with IP addresses of your 2 UAT Web servers
+Updated the  inventory ansible-config-mgt/inventory/uat.yml file with IP addresses of the 2 UAT Web servers
+
+![scl20](https://user-images.githubusercontent.com/94229949/193938232-10b511f6-b2c6-4ec5-aa51-8c5a22f7656e.png)
+
 
 In /etc/ansible/ansible.cfg file ,i uncomment roles_path string and provided a full path to the roles directory roles_path    = /home/ubuntu/ansible-config-mgt/roles, so Ansible could know where to find configured roles.
 
@@ -67,11 +70,11 @@ I navigated to the tasks directory, and inside the main.yml file, I prepared the
 *Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
 *Make sure httpd service is started
 
-Within the static-assignments folder,I  created a new assignment for uat-webservers uat-webservers.yml. This is where i reference the role.
+Within the static-assignments folder,I  created a new assignment for uat-webservers uat-webservers.yml. This is where i referenced the role.
 
 ![scl18](https://user-images.githubusercontent.com/94229949/193887326-2869fcc6-d8d1-4b02-b191-d0b3ce322451.png)
 
-The entry point to the ansible configuration is the site.yml file. Therefore, i need to refer  uat-webservers.yml role inside site.yml.
+The entry point to the ansible configuration is the site.yml file. Therefore, i  referenced uat-webservers.yml role inside site.yml.
 
 ![scl19](https://user-images.githubusercontent.com/94229949/193887896-82979f7a-474e-4ca3-9c80-36c5ec1f3fb0.png)
 
@@ -80,7 +83,11 @@ Created a Pull Request and merged them to master branch
 I ran the playbook against your uat inventory using command ' sudo ansible-playbook -i /home/ubuntu/ansible-config-mgt/inventory/uat.yml /home/ubuntu/ansible-config-mgt/playbooks/site.yml '
 
 
+![scl15](https://user-images.githubusercontent.com/94229949/193938605-e32520e1-d11a-4e39-b7ac-2f1226a945b3.png)
 
 
+![scl16](https://user-images.githubusercontent.com/94229949/193938625-6336afdb-cf0e-4102-b30a-09efb203f039.png)
 
+
+![scl17](https://user-images.githubusercontent.com/94229949/193938636-afbaa38c-8a77-43d4-8af3-84b4775b29f1.png)
 
